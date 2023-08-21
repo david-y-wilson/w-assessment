@@ -46,7 +46,7 @@ class HomeController extends Controller
         $employee = $this->school->employees->get($id, ['classes']);
 
         foreach ($employee->classes->data as $class) {
-            $class = $this->school->classes->get($class->id, ['students','lessons'], ['has_lessons' => true]);
+            $class = $this->school->classes->get($class->id, [], ['has_lessons' => true, 'has_students' => true]);
         }
 
         return view('classes', [
